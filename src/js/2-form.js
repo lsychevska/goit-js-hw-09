@@ -85,6 +85,7 @@ function populateTextFields() {
   if (localStorageData) {
     emailInput.value = JSON.parse(localStorageData).email;
     messageInput.value = JSON.parse(localStorageData).message;
+    formData = JSON.parse(localStorageData);
   }
 }
 
@@ -105,7 +106,10 @@ function onFormSubmit(event) {
     return;
   }
   console.log(formData);
-  formData = {};
+  formData = {
+    email: '',
+    message: '',
+  };
   localStorage.removeItem(FEEDBACK_STATE_KEY);
   event.currentTarget.reset();
 }

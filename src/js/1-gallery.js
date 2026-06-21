@@ -105,21 +105,11 @@ galleryImages.forEach(galleryImage =>
   setAttributes(galleryImage, { width: 360, height: 200 })
 );
 
-const lightbox = new SimpleLightbox('.gallery a');
-
-Object.assign(lightbox, {
-  captions: 'true',
-  captionType: 'text',
-  captionsData: 'title',
+const lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionSelector: 'img',
+  captionType: 'attr',
+  captionsData: 'alt',
   captionPosition: 'bottom',
-  captionDelay: '250',
+  captionDelay: 250,
 });
-
-//document.querySelector('.sl-overlay').style.backgroundColor = '#2E2F42CC';
-
-lightbox.elements.forEach(element => {
-  const currentItem = element.querySelector('.gallery-image');
-  currentItem.setAttribute('title', currentItem.getAttribute('alt'));
-});
-
-lightbox.on('show.simplelightbox', function () {});
